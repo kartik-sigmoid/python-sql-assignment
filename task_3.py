@@ -19,8 +19,10 @@ class ExcelToSQL:
             if data == 'Q2':
                 df = pd.read_excel(file, 'Q2')
                 df.to_sql(name='total_compensation', con=self.engine, if_exists='append', index=False)
+            return 1
         except:
             self.logger.warning("Execution unsuccessful. Exception occurred.")
+            return 0
         finally:
             self.logger.info("Execution Successful.")
 
